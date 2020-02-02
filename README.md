@@ -34,5 +34,3 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 撤销
 保存图片
 
-## 其他功能待完善
-
