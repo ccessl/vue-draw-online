@@ -1,31 +1,34 @@
 <template>
   <div class="container">
-    <tool-bar @click="toolClick"></tool-bar>
-    <draw-container :toolState="toolState" :trigger="trigger"></draw-container>
+    <tool-header></tool-header>
+    <tool-bar></tool-bar>
+    <div class="main">
+      <draw-container class="draw"></draw-container>
+      <element-list></element-list>
+    </div>
   </div>
 </template>
 <script>
+  import ToolHeader from './components/ToolHeader'
   import ToolBar from './components/ToolBar'
-  import DrawContainer from './components/drawContainer'
+  import DrawContainer from './components/DrawContainer'
+  import ElementList from './components/ElementList'
 
   export default {
     name: 'ZrenderDraw',
     components: {
+      ToolHeader,
       ToolBar,
-      DrawContainer
+      DrawContainer,
+      ElementList
     },
     data () {
       return{
-        toolState:'',
-        trigger:0
 
       }
     },
     methods:{
-      toolClick(state){
-        this.toolState=state
-        this.trigger++
-      }
+
     }
   }
 </script>
@@ -33,6 +36,14 @@
   .container{
     height:100%;
     position:relative;
-    background-color: #99a9bf;
+    display: flex;
+    flex-direction: column;
+    .main{
+      flex:1;
+      display: flex;
+      .draw{
+        flex:1;
+      }
+    }
   }
 </style>
