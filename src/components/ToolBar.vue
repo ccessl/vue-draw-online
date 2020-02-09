@@ -30,10 +30,12 @@
         data () {
             return {
                 activeTool: '',
-                toolList: [{ icon: 'fa-circle-o', state: 'circle', title: '椭圆工具' },
+                toolList: [
+                    { icon: 'fa fa-pencil', state: 'polyline', title: '画笔工具' },
+                    { icon: 'fa-circle-o', state: 'ellipse', title: '椭圆工具' },
                     { icon: 'fa-square-o', state: 'rect', title: '矩形工具' },
                     { icon: 'fa-minus', state: 'line', title: '直线工具' },
-                    { icon: 'fa-font', state: 'font', title: '文字工具' }],
+                    { icon: 'fa-font', state: 'text', title: '文字工具' }],
                 colorList:[
                     { color:'#000000'},
                     { color:'#FF88C2'},

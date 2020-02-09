@@ -8,7 +8,8 @@ export default new Vuex.Store({
     color:'#000000',
     trigger:0,
     drawState:'',
-    zrGroup:{}
+    zrGroup:{},
+    zr:null
   },
   mutations:{
     setColor(state,value){
@@ -20,6 +21,9 @@ export default new Vuex.Store({
     },
     setZrGroup(state,value){
       state.zrGroup=value
+    },
+    setZr(state,value){
+      state.zr=value
     }
 
   }

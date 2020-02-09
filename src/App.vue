@@ -4,7 +4,7 @@
     <tool-bar></tool-bar>
     <div class="main">
       <draw-container class="draw"></draw-container>
-      <element-list></element-list>
+      <element-list ></element-list>
     </div>
   </div>
 </template>
@@ -41,6 +41,7 @@
     .main{
       flex:1;
       display: flex;
+      overflow: hidden;
       .draw{
         flex:1;
       }

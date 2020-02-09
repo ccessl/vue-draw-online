@@ -1,6 +1,13 @@
-# drawOnline
+# 简易在线绘图demo
 
-vue-cli3+Zrender 在线绘图 demo
+### 技术栈
+```
+vue-cli
+vuex
+zrender
+font-awesome
+sass
+```
 
 ## Project setup
 ```
@@ -22,15 +29,10 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
+### screenShot
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 当前功能
 
-绘制椭圆
-绘制矩形
-绘制直线
-绘制文字
-撤销
-保存图片
+铅笔、绘制椭圆、绘制矩形、绘制直线、绘制文字、撤销、保存图片、颜色填充
 

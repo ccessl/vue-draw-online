@@ -17,7 +17,7 @@
                 zrGroup: '',
                 zrBgElement:null,
                 commonStyle: {
-                    fill: '#FFFFFF',
+                    fill: 'transparent',
                     stroke: 'black'
                 },
                 fontStyle:{
@@ -47,8 +47,11 @@
                       this.save()
                       break
                   //图形
-                  case 'circle':
-                      this.drawCircle()
+                  case'polyline':
+                      this.drawPolyline()
+                      break
+                  case 'ellipse':
+                      this.drawEllipse()
                       break
                   case 'rect':
                       this.drawRect()
@@ -56,8 +59,8 @@
                   case 'line':
                       this.drawLine()
                       break
-                  case 'font':
-                      this.drawFont()
+                  case 'text':
+                      this.drawText()
                       break
                   //填充
                   case 'fill':
@@ -69,9 +72,45 @@
         methods: {
             ...mapMutations({
                 setDrawState:'setDrawState',
-                setZrGroup:'setZrGroup'
+                setZrGroup:'setZrGroup',
+                setZr:'setZr'
             }),
-            drawCircle () {
+            drawPolyline(){
+                const _this = this
+                let element, posX, posY
+                let points=[]
+                let mouseDown = false
+                let zrGroup = this.zrGroup
+                this.zr.on('mousedown', (event) => {
+                    posX = event.offsetX - zrGroup.position[0]
+                    posY = event.offsetY - zrGroup.position[1]
+                    mouseDown = true
+                    points.length=0
+                    points.push([posX,posY])
+                    element = new zrender.Polyline({
+                        type:'circle',
+                        shape: {
+                            points
+                        },
+                        style: {..._this.commonStyle,stroke:_this.color,smooth:0.5}
+                    })
+                    zrGroup.add(element)
+                })
+                this.zr.on('mousemove', (event) => {
+                    if (mouseDown) {
+                        let Y = event.offsetY - zrGroup.position[1]
+                        let X = event.offsetX - zrGroup.position[0]
+                        points.push([X,Y])
+                        element.attr({
+                            shape: {
+                                points
+                            }
+                        })
+                    }
+                })
+                this.zr.on('mouseup', () => { mouseDown = false })
+            },
+            drawEllipse () {
                 const _this = this
                 let element, posX, posY
                 let mouseDown = false
@@ -182,7 +221,7 @@
                 })
                 this.zr.on('mouseup', () => { mouseDown = false })
             },
-            drawFont () {
+            drawText () {
                 const _this = this
                 let element, posX, posY
                 let zrGroup = this.zrGroup
@@ -286,7 +325,9 @@
             zrGroup.position = [0, 0]
             this.zrGroup = zrGroup
             this.zr.add(this.zrGroup)
+
             this.setZrGroup(this.zrGroup)
+            this.setZr(this.zr)
         }
     }
 </script>
