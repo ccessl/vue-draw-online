@@ -30,7 +30,9 @@ npm run lint
 ```
 
 ### screenShot
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](https://raw.githubusercontent.com/ccessl/vue-draw-online/master/screenShot/1.PNG)
+![](https://raw.githubusercontent.com/ccessl/vue-draw-online/master/screenShot/2.PNG)
+
 
 ## 当前功能
 
